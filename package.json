@@ -13,6 +13,7 @@
     "debug": "~2.1.1",
     "express": "~4.12.2",
     "jade": "~1.9.2",
+    "less": "^2.5.1",
     "merge-descriptors": "^1.0.0",
     "mincer": "^1.2.4",
     "morgan": "~1.5.1",
