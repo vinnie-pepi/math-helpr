@@ -1,0 +1,24 @@
+extends layout
+block stylesheets
+  link(rel='stylesheet', href='/assets/geo.css')
+block content
+  canvas#stage(width='800', height='500')
+block javascripts
+  script(src='/javascripts/createjs.js')
+  script.
+    $(function() {
+      var mapA = new Image();
+      mapA.src = '/images/map_scrshot.png'; 
+
+      function draw() {
+        var ctx = document.getElementById('stage')
+          .getContext('2d');
+        ctx.drawImage(mapA, 0, 0, 800, 500);
+        ctx.arc(50, 50, 20, 0, 360);
+        ctx.fillStyle = '#FFF';
+        ctx.fill();
+      }
+      mapA.addEventListener('load', function() {
+        draw();
+      });
+    });

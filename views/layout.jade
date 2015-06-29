@@ -1,0 +1,15 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/assets/main.css')
+    link(rel='stylesheet', href='/font-awesome/css/font-awesome.min.css')
+    block stylesheets
+    script(src='/jquery/dist/jquery.min.js')
+    script(src='/eventemitter2/lib/eventemitter2.js')
+    script(src='/assets/utils.js')
+    script(src='/javascripts/jade.js')
+  body
+    block content
+    block javascripts

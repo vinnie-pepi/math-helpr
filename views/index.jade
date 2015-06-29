@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  h1.welcome 
+    | Welcome to #{title} 
+    span.name Susannah!
+  .problemSet
+    .problem-set-setup
+    .stats-section
+    
+block javascripts
+  script(src='/assets/timer.js')
+  script(src='/assets/problem.js')
+  script(src='/assets/problem_set.js')
+  script.
+    new ProblemSet($('.problemSet'));
+    

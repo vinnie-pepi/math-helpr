@@ -1,0 +1,43 @@
+@import "../../bower_components/bootstrap/less/bootstrap.less";
+
+@pallette-red: #EA3556;
+@pallette-magenta: #ED146F;
+@pallette-blue: #61D2D6;
+@pallette-blue-light: #9BF0E9;
+@pallette-yellow: #EDDE45;
+@pallette-gray: #EDE5E2;
+
+.welcome .name {
+  color: @pallette-magenta;
+}
+.timer {
+  color: @pallette-blue;
+}
+.problemSet {
+  .problem-set-setup {
+    label, input, button {
+      margin: 0px 8px;
+    }
+  }
+  .btn-start {
+    span {
+      margin: 0px 4px;
+    }
+  }
+  .problem {
+    margin-top: 40px;
+    span {
+      margin: 0px 4px;
+    }
+    .answer {
+      width: 3em;
+    }
+  }
+  font-size: 24px;
+  .correct {
+    color: green;
+  }
+  .incorrect {
+    color: red;
+  }
+}
