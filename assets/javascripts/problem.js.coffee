@@ -88,5 +88,6 @@ class @Problem extends EventEmitter2
     @$input = @$html.find('input')
     @$root.append(@$html)
     @$input.focus()
-    @timer = new Timer(@$html.find('.timer'))
+    @timer = new Timer()
+    @timer.render(@$html.find('.timer'))
     @attachEvents()

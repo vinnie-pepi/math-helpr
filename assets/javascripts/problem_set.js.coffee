@@ -10,7 +10,8 @@ class @ProblemSet
         span Go
   """
 
-  constructor: (@$root) ->
+  constructor: (@$root, options) ->
+    @debug = options.debug || false
     @totalCount = 0
     @currentProblemIdx = 0
     @setupForm()
