@@ -1,5 +1,10 @@
 class @ProblemSet
   DEFAULT_COUNT = 10
+  FINISHED_TMPL = """
+    h1 Congratulations!
+    br
+    em \#{time}
+  """
   SETUP_FORM = """
     form.form-inline
       .form-group
@@ -25,14 +30,19 @@ class @ProblemSet
     @$btn-start = @$formRoot.find('.btn-start')
 
   showFinished: () ->
-    @stats.getTotalTime()
+    html = jade.compile(FINISHED_TMPL)({
+      time: @stats.getTotalTime()
+    })
+    console.log html
+    @$root.html(html)
 
   nextProblem: () ->
-    if @currentProblemIdx == @totalCount
+    if @currentProblemIdx >= @totalCount
       return @showFinished()
     p = new Problem(@$root)
     p.on 'correct', (problemData) =>
       @currentProblemIdx++
+      console.log @totalCount, @currentProblemIdx
       @stats.correct++
       @stats.incTotalTime(problemData.time)
       @stats.render()
@@ -66,7 +76,7 @@ class Stats
     @render()
 
   getTotalTime: () ->
-    return @time
+    return @time.getReadout()
 
   incTotalTime: (t) ->
     @time.add(t)
