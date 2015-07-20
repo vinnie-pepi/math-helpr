@@ -4,14 +4,16 @@ class @Timer
   minutes: 0
   hours: 0
 
-  constructor: (@$root) ->
-    @$root.html("00:00:00")
+  constructor: (@$root=null) ->
+    if @$root
+      @$root.html("00:00:00")
 
   start: () ->
     @tick()
 
   getTime: () ->
     return @seconds + (60 * @minutes) + (3600 * @hours)
+
   stop: () ->
     clearTimeout(@t)
 
@@ -19,10 +21,11 @@ class @Timer
     @t = setTimeout(() =>
       @add()
     , 1000)
-    @$root.html(@getReadout())
+    if @$root
+      @$root.html(@getReadout())
 
-  add: () ->
-    @seconds++
+  add: (n=1) ->
+    @seconds+=n
     if (@seconds >= 60)
       @seconds = 0
       @minutes++

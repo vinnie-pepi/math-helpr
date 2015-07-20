@@ -4,9 +4,14 @@ block content
   h1.welcome 
     | Welcome to #{title} 
     span.name Susannah!
-  .problemSet
-    .problem-set-setup
-    .stats-section
+  
+  .container-fluid
+    .row
+      .col-md-10
+        .problemSet
+          .problem-set-setup
+      .col-md-2
+        .stats-section
     
 block javascripts
   script(src='/assets/timer.js')

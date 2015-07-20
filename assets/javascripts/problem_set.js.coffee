@@ -33,7 +33,7 @@ class @ProblemSet
     p.on 'correct', (problemData) =>
       @currentProblemIdx++
       @stats.correct++
-      @stats.time += problemData.time
+      @stats.incTotalTime(problemData.time)
       @stats.render()
       @nextProblem()
     p.on 'incorrect', () =>
@@ -50,20 +50,27 @@ class @ProblemSet
 
 class Stats
   template: jade.compile """
-    span Correct: \#{correct}
-    span &nbsp;|&nbsp;
-    span Incorrect: \#{incorrect}
+    .well
+      h5 Correct: \#{correct}
+      h5 Incorrect: \#{incorrect}
+      h5 
+        Total Time:&nbsp;
+        span.stats-total-time \#{time}
   """
 
   constructor: (@$root) ->
     @correct = 0
     @incorrect = 0
-    @time = 0
+    @time = new Timer()
     @render()
 
   getTotalTime: () ->
     return @time
 
+  incTotalTime: (t) ->
+    @time.add(t)
+
   render: () ->
     stats = {@correct, @incorrect}
+    stats.time = @time.getReadout()
     @$root.html(@template(stats))
