@@ -3,7 +3,7 @@ class @Problem extends EventEmitter2
   TEMPLATE = """
     mixin component(idx, answerIdx)
       - if (answerIdx == idx)
-        input.answer(type='number')
+        input.answer(type='number', pattern='[0-9]+(?:\\\\.[0-9]+)?')
       - else
         span \#{quantities[idx]}
     .problem 
