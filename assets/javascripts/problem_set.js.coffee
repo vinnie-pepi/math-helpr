@@ -33,7 +33,6 @@ class @ProblemSet
     html = jade.compile(FINISHED_TMPL)({
       time: @stats.getTotalTime()
     })
-    console.log html
     @$root.html(html)
 
   nextProblem: () ->
@@ -42,7 +41,6 @@ class @ProblemSet
     p = new Problem(@$root)
     p.on 'correct', (problemData) =>
       @currentProblemIdx++
-      console.log @totalCount, @currentProblemIdx
       @stats.correct++
       @stats.incTotalTime(problemData.time)
       @stats.render()

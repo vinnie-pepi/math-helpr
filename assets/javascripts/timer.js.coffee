@@ -32,10 +32,10 @@ class @Timer
   add: (n=1) ->
     @seconds+=n
     if (@seconds >= 60)
-      @seconds = 0
+      @seconds %= 60
       @minutes++
       if (@minutes >= 60)
-        @minutes = 0
+        @minutes %= 60
         @hours++
     unless @static
       @tick()

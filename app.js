@@ -17,7 +17,7 @@ environment.appendPath('assets/stylesheets');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
-var debug = require('debug')('simple_table:log');
+var debug = require('debug')('math:log');
 var app = express();
 
 app.use('/assets', Mincer.createServer(environment));

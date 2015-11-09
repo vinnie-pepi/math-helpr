@@ -1,4 +1,5 @@
 class @Problem extends EventEmitter2
+  
   OPERATORS = [ '+', '-' ]
   TEMPLATE = """
     mixin component(idx, answerIdx)
@@ -27,6 +28,7 @@ class @Problem extends EventEmitter2
   MAX: 50
 
   constructor: (@$root) ->
+    @DEBUG_MODE = false
     @setupEquation()
     @render()
     
@@ -51,6 +53,7 @@ class @Problem extends EventEmitter2
     @answer = @quantities[@answerIdx]
 
   markAnswer: (correct) ->
+    correct = true if @DEBUG_MODE
     @emit('incorrect') if !correct
 
     $answerField = @$html.find('.answerStatus')
